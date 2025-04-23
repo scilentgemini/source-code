@@ -36,7 +36,7 @@
                     <div class="about_text">
                         {!! $about?->description !!}
 
-                        <a href="{{ $about?->button_url }}">learn more</a>
+                        {{-- <a href="{{ $about?->button_url }}">learn more</a> --}}
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-6">
