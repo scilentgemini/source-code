@@ -67,7 +67,7 @@
     <!--==========================
             OUR PACKAGE START
     ===========================-->
-    @include('frontend.home.sections.featured-package-section')
+    {{-- @include('frontend.home.sections.featured-package-section') --}}
     <!--==========================
             OUR PACKAGE END
     ===========================-->
@@ -76,7 +76,7 @@
     <!--============================
             TESTIMONIAL PART START
     ==============================-->
-    @include('frontend.home.sections.testimonial-section')
+    {{-- @include('frontend.home.sections.testimonial-section') --}}
     <!--============================
             TESTIMONIAL PART END
     ==============================-->
