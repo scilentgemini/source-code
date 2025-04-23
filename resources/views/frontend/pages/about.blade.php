@@ -41,11 +41,14 @@
                 </div>
                 <div class="col-xl-5 col-lg-6">
                     <div class="about_img">
-                        <img style="width: 442px !important;
+                        {{-- <img style="width: 442px !important;
                         height: 500px !important;" src="{{ getYtThumbnail($about?->video_url) }}" alt="about" class="img-fluid w-100">
                         <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $about?->video_url }}">
                             <i class=" fas fa-play"></i>
-                        </a>
+                        </a> --}}
+                        <img style="width: 442px !important;
+                        height: 500px !important;" src="{{ asset($about?->image) }}" alt="about" class="img-fluid w-100">
+
                         <div class="img_2">
                             <img src="{{ asset($about?->image) }}" alt="about" class="img-fluid w-100">
                         </div>
