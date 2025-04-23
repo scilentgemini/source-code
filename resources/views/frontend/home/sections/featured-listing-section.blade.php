@@ -22,7 +22,7 @@
                         <a class="map" onclick="showListingModal('{{ $listing->id }}')" data-bs-toggle="modal" data-bs-target="#exampleModal2"
                             href="#"><i class="fas fa-info"></i></a>
                         <div class="wsus__featured_single_text">
-                            <p class="list_rating">
+                            {{-- <p class="list_rating">
                                 @for ($i = 1; $i <= 5; $i++)
                                     @if ($i <= intval($listing->reviews_avg_rating))
                                         <i class="fas fa-star"></i>
@@ -31,7 +31,7 @@
                                     @endif
                                 @endfor
                                 <span>({{ $listing->reviews_count }} review)</span>
-                            </p>
+                            </p> --}}
                             <a href="{{ route('listing.show', $listing->slug) }}">{{ truncate($listing->title) }}</a>
                             <p class="address">{{ $listing->location->name }}</p>
                         </div>

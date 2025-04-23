@@ -48,7 +48,7 @@
                                 <h6>{{ $listing->title }}</h6>
                                 <p class="host_name">Job Added By: <a
                                         href="agent_public_profile.html">{{ $listing->user->name ?? '-' }}</a></p>
-                                <p class="rating">
+                                {{-- <p class="rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         @if ($i <= intval($listing->reviews_avg_rating))
                                             <i class="fas fa-star"></i>
@@ -58,7 +58,7 @@
                                     @endfor
                                     <b>{{ intval($listing->reviews_avg_rating) }}</b>
                                     <span>({{ count($reviews) }} review)</span>
-                                </p>
+                                </p> --}}
                                 <ul>
                                     @if ($listing->is_verified)
                                         <li><a href="#"><i class="far fa-check"></i> Verified</a></li>
