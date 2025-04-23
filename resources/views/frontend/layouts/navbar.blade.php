@@ -78,7 +78,7 @@
 
             </ul>
             @auth
-                <a class="user_btn" href="{{ route('user.dashboard') }}"><i class="fas fa-user"></i> Dashboard</a>
+                <a class="user_btn" href="{{ route('admin.dashboard.index') }}"><i class="fas fa-user"></i> Dashboard</a>
             @endauth
             @guest
                 <a class="user_btn" href="{{ route('login') }}"><i class="fas fa-user"></i> Login</a>

@@ -12,6 +12,7 @@ use Illuminate\View\View;
 class DashboardController extends Controller
 {
     function index() : View {
+        abort(404);
         $subscription = Subscription::with('package')->where('user_id', auth()->user()->id)->first();
         $listingCount = Listing::where('user_id', auth()->user()->id)->count();
         $pendingListingCount = Listing::where('user_id', auth()->user()->id)->where('is_approved', 0)->count();
@@ -23,6 +24,6 @@ class DashboardController extends Controller
         })
         ->where('is_approved', 1)->count();
 
-        return view('frontend.dashboard.index', compact('subscription', 'listingCount', 'pendingListingCount', 'reviewsCount', 'activeListingCount'));
+        return view('admin.dashboard.index', compact('subscription', 'listingCount', 'pendingListingCount', 'reviewsCount', 'activeListingCount'));
     }
 }

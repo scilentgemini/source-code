@@ -61,7 +61,7 @@
                                                 Remeber Me
                                             </label>
                                         </div>
-                                        <a href="{{ route('password.request') }}">Forget Password ?</a>
+                                        {{-- <a href="{{ route('password.request') }}">Forget Password ?</a> --}}
                                     </div>
                                 </div>
 
@@ -79,7 +79,9 @@
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
                         </ul> --}}
-                        <p class="create_account">Dont’t have an aceount ? <a href="{{ route('register') }}">Create Account</a></p>
+                        <a href="{{ route('password.request') }}">Forgot Password ?</a>
+
+                        {{-- <p class="create_account">Dont’t have an aceount ? <a href="{{ route('register') }}">Create Account</a></p> --}}
                     </div>
                 </div>
             </div>
