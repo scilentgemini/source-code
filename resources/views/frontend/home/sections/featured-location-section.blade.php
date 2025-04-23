@@ -12,17 +12,16 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <div class="wsus__location_filter">
-                        @foreach ($featuredLocations as $location)
-                        <button class="{{ $loop->index === 0 ? 'l_first_tab' : '' }}" data-filter=".{{ $location->slug }}">{{ $location->name }}</button>
+                        @foreach ($categories as $category)
+                        <button class="{{ $loop->index === 0 ? 'l_first_tab' : '' }}" data-filter=".{{ $category->slug }}">{{ $category->name }}</button>
                         @endforeach
-
                     </div>
                 </div>
             </div>
             <div class="row grid">
-                @foreach ($featuredLocations as $location)
-                    @foreach ($location->listings as $listing)
-                    <div class="col-xl-3 col-sm-6 col-lg-4 {{ $location->slug }} ">
+                @foreach ($categories as $category)
+                    @foreach ($category->listings as $listing)
+                    <div class="col-xl-3 col-sm-6 col-lg-4 {{ $category->slug }} ">
                         <div class="wsus__featured_single">
                             <div class="wsus__featured_single_img">
                                 <img src="{{ asset($listing->image) }}" alt="{{ $listing->title }}" class="img-fluid w-100">
