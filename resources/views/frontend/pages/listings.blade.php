@@ -41,7 +41,7 @@
                             </div>
                             <div class="sidebar_line_select">
                                 <select class="select_2" name="category">
-                                    <option>categorys</option>
+                                    <option>Countries</option>
                                     @foreach ($categories as $category)
                                         <option @selected($category->slug == request()->category) value="{{ $category->slug }}">{{ $category->name }}</option>
                                     @endforeach
@@ -50,14 +50,14 @@
                             </div>
                             <div class="sidebar_line_select">
                                 <select class="select_2" name="location">
-                                    <option value="">location</option>
+                                    <option value="">Companies</option>
                                     @foreach ($locations as $location)
                                     <option @selected($location->slug == request()->location) value="{{ $location->slug }}">{{ $location->name }}</option>
                                     @endforeach
 
                                 </select>
                             </div>
-                            <div class="wsus__pro_check">
+                            {{-- <div class="wsus__pro_check">
                                 @foreach ($amenities as $amenity)
                                 <div class="form-check">
                                     <input @checked(in_array($amenity->slug, (request()->has('amenity') && is_array(request()->amenity)) ? request()->amenity : [])) class="form-check-input" type="checkbox" value="{{ $amenity->slug }}" name="amenity[]"
@@ -68,7 +68,7 @@
                                 </div>
                                 @endforeach
 
-                            </div>
+                            </div> --}}
                             <button class="read_btn" type="submit">search</button>
                         </div>
                     </form>

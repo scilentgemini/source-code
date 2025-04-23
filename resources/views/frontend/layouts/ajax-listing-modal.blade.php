@@ -12,10 +12,10 @@
                 <span class="red"><i class="far fa-check"></i> verified</span>
                 @endif
                 <h5>{{ $listing->title }}</h5>
-                <a class="call" href="callto:{{ $listing->phone }}"><i class="fal fa-phone-alt"></i>
+                {{-- <a class="call" href="callto:{{ $listing->phone }}"><i class="fal fa-phone-alt"></i>
                     {{ $listing->phone }}</a>
                 <a class="mail" href="mailto:{{ $listing->email }}"><i class="fal fa-envelope"></i>
-                    {{ $listing->email }}</a>
+                    {{ $listing->email }}</a> --}}
                 <p>{{ truncate(strip_tags($listing->description), 140) }}</p>
                 <a class="read_btn" href="{{ route('listing.show', $listing->slug) }}">read more</a>
             </div>
