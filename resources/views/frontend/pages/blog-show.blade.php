@@ -45,7 +45,7 @@
                         </ul>
                         <h4>{{ $blog->title }}</h4>
                         {!! $blog->description !!}
-                        <div class="blog_comment_area">
+                        {{-- <div class="blog_comment_area">
                             <h5 class="wsus__single_comment_heading">Total Comment ({{ count($blog->comments) }})</h5>
                             @foreach ($blog->comments as $comment)
                                 <div class="wsus__single_comment">
@@ -79,7 +79,7 @@
                                 <div class="alert alert-warning">Please <a href="{{ route('login') }}">login</a> for add a comment!</div>
                             @endguest
 
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-5">
