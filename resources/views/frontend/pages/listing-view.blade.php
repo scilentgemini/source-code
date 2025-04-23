@@ -45,7 +45,7 @@
                             </div>
                             <div class="listing_det_header_text">
                                 <h6>{{ $listing->title }}</h6>
-                                <p class="host_name">Hosted by <a href="agent_public_profile.html">{{ $listing->user->name ?? '-' }}</a></p>
+                                <p class="host_name">Job Added By: <a href="agent_public_profile.html">{{ $listing->user->name ?? '-' }}</a></p>
                                 <p class="rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         @if ($i <= intval($listing->reviews_avg_rating))
@@ -196,7 +196,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="listing_det_side_address">
-                                    <a href="callto:{{ $listing->phone }}"><i class="fal fa-phone-alt"></i>
+                                    {{-- <a href="callto:{{ $listing->phone }}"><i class="fal fa-phone-alt"></i>
                                         {{ $listing->phone }}</a>
                                     <a href="mailto:{{ $listing->email }}"><i class="fal fa-envelope"></i>
                                         {{ $listing->email }}</a>
@@ -217,7 +217,13 @@
                                         @if ($listing->whatsapp_link)
                                         <li><a href="{{ $listing->whatsapp_link }}"><i class="fab fa-whatsapp"></i></a></li>
                                         @endif
-                                    </ul>
+                                    </ul> --}}
+                                    <a class="venobox" data-gall="gallery01" href="{{ asset($image->image) }}">
+                                        <img src="{{ asset($image->image) }}" alt="gallery1" class="img-fluid w-100">
+                                        <div class="photo_overlay">
+                                            <i class="fal fa-plus"></i>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                             @if (count($listing->schedules) > 0)

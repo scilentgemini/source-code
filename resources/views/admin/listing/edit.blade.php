@@ -59,7 +59,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">category <span class="text-danger">*</span></label>
+                                            <label for="">Country <span class="text-danger">*</span></label>
                                             <select class="form-control" name="category" required>
                                                 <option value="">Select</option>
                                                 @foreach ($categories as $category)
@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Location <span class="text-danger">*</span></label>
+                                            <label for="">Company Name</label>
                                             <select class="form-control" name="location">
                                                 <option value="">Select</option>
                                                 @foreach ($locations as $location)
@@ -81,12 +81,13 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="">Address <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="address" value="{{ $listing->address }}" required>
-                                </div>
+                                </div> --}}
 
                                 <div class="row">
+                                    {{-- 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Phone <span class="text-danger">*</span></label>
@@ -98,15 +99,15 @@
                                             <label for="">Email <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="email" value="{{ $listing->email }}" required>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Website <span class="text-danger"></span></label>
+                                            <label for="">Salary <span class="text-danger"></span></label>
                                             <input type="text" class="form-control" name="website" value="{{ $listing->website }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    {{-- <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="">Facebook Link <span class="text-danger"></span></label>
                                             <input type="text" class="form-control" name="facebook_link" value="{{ $listing->facebook_link }}" >
@@ -129,8 +130,8 @@
                                             <label for="">Whatsapp Link <span class="text-danger"></span></label>
                                             <input type="text" class="form-control" name="whatsapp_link" value="{{ $listing->whatsapp_link }}">
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
+                                    </div> --}}
+                                    {{-- <div class="col-md-12">
                                         @if ($listing->file)
                                         <div>
                                             <i class="fas fa-file-alt" style="font-size: 70px"></i>
@@ -141,17 +142,17 @@
                                             <input type="file" class="form-control" name="attachment">
                                             <input type="hidden" class="form-control" name="old_attachment" value="{{ $listing->attachment }}">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Amenities</label>
                                     <select class="form-control select2" multiple="" name="amenities[]" value="[3]">
                                         @foreach ($amenities as $amenity)
                                             <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <label for="">Description <span class="text-danger">*</span></label>
@@ -163,7 +164,7 @@
                                     <textarea name="google_map_embed_code" class="form-control">{!! $listing->google_map_embed_code !!}</textarea>
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="">Seo Title <span class="text-danger"></span></label>
                                     <input type="text" class="form-control" name="seo_title" value="{{ $listing->seo_title }}">
                                 </div>
@@ -171,7 +172,7 @@
                                 <div class="form-group">
                                     <label for="">Seo Description <span class="text-danger"></span></label>
                                     <textarea name="seo_description" class="form-control">{!! $listing->seo_description !!}</textarea>
-                                </div>
+                                </div> --}}
 
                                 <div class="row">
                                     <div class="col-md-4">
