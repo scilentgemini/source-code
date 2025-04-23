@@ -44,6 +44,7 @@
                                 <div class="form-group">
                                     <label for="">Copyright <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="copyright" value="{{ $footerInfo?->copyright }}">
+
                                 </div>
 
                                 <div class="form-group">

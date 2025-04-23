@@ -70,8 +70,8 @@
                 <div class="col-xl-6 col-md-5">
                     <p>{{ $footerInfo?->copyright }}</p>
                 </div>
-                <div class="col-xl-6 col-md-7">
-
+                <div class="col-xl-6 col-md-7 text-end">
+                    <p>Crafted with <i class="fas fa-heart" style="color: #8d029b;"></i> by <a href="https://mauveinetech.com" target="_blank" style="color: #2196F3;">Mauveine Tech</a></p>
                 </div>
             </div>
         </div>

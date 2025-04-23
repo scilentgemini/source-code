@@ -79,7 +79,8 @@
               </div>
             </div>
             <div class="simple-footer">
-              Copyright &copy; Websolutionus {{ date('Y') }}
+                Copyright &copy; {{ date('Y') }} <div class="bullet"></div>
+                Crafted with <i class="fas fa-heart" style="color: #8d029b;"></i> by <a href="https://mauveinetech.com" target="_blank" style="color: #8d029b;">Mauveine Tech</a>
             </div>
           </div>
         </div>
