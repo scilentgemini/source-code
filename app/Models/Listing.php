@@ -17,7 +17,9 @@ class Listing extends Model
     }
 
     function location() : BelongsTo {
-        return $this->belongsTo(Location::class);
+        return $this->belongsTo(Location::class)->withDefault([
+            'name' => '-'
+        ]);
     }
 
     function user() : BelongsTo {

@@ -83,7 +83,7 @@
                                 <div class="wsus__featured_single_img">
                                     <img src="{{ asset($listing->image) }}" alt="{{ $listing->title }}" class="img-fluid w-100">
                                     {{-- <a href="#" class="love"><i class="fas fa-heart"></i></a> --}}
-                                    <a href="{{ route('listings', ['category' => $listing->category->slug]) }}" class="small_text">{{ $listing->category->name }}</a>
+                                    <a href="{{ route('listings', ['category' => $listing->category->slug]) }}" class="small_text">{{ $listing->category->name ?? '-' }}</a>
                                 </div>
                                 <a class="map" onclick="showListingModal('{{ $listing->id }}')" data-bs-toggle="modal" data-bs-target="#exampleModal2"
                                     href="#"><i class="fas fa-info"></i></a>
@@ -99,7 +99,7 @@
                                         <span>({{ $listing->reviews_count }} review)</span>
                                     </p>
                                     <a href="{{ route('listing.show', $listing->slug) }}">{{ truncate($listing->title) }}</a>
-                                    <p class="address">{{ $listing->location->name }}</p>
+                                    <p class="address">{{ $listing->location->name ?? '-' }}</p>
                                 </div>
                             </div>
                         </div>

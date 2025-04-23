@@ -67,20 +67,20 @@ class ListingController extends Controller
         $listing->title = $request->title;
         $listing->slug = Str::slug($request->title);
         $listing->category_id = $request->category;
-        $listing->location_id = $request->location;
-        $listing->address = $request->address;
-        $listing->phone = $request->phone;
-        $listing->email = $request->email;
-        $listing->website = $request->website;
-        $listing->facebook_link = $request->facebook_link;
-        $listing->x_link = $request->x_link;
-        $listing->linkedin_link = $request->linkedin_link;
-        $listing->whatsapp_link = $request->whatsapp_link;
+        $listing->location_id = $request->location ?? null;
+        $listing->address = $request->address ?? null;
+        $listing->phone = $request->phone ?? null;
+        $listing->email = $request->email ?? null;
+        $listing->website = $request->website ?? null;
+        $listing->facebook_link = $request->facebook_link ?? null;
+        $listing->x_link = $request->x_link ?? null;
+        $listing->linkedin_link = $request->linkedin_link ?? null;
+        $listing->whatsapp_link = $request->whatsapp_link ?? null;
         $listing->file = $attachmentPath;
         $listing->description = $request->description;
-        $listing->google_map_embed_code = $request->google_map_embed_code;
-        $listing->seo_title = $request->seo_title;
-        $listing->seo_description = $request->seo_description;
+        $listing->google_map_embed_code = $request->google_map_embed_code ?? null;
+        $listing->seo_title = $request->seo_title ?? null;
+        $listing->seo_description = $request->seo_description ?? null;
         $listing->status = $request->status;
         $listing->is_featured = $request->is_featured;
         $listing->is_verified = $request->is_verified;
@@ -88,17 +88,17 @@ class ListingController extends Controller
         $listing->is_approved = 1;
         $listing->save();
 
-        foreach($request->amenities as $amenityId) {
-            $amenity = new ListingAmenity();
-            $amenity->listing_id = $listing->id;
-            $amenity->amenity_id = $amenityId;
-            $amenity->save();
+        if ($request->amenities) {
+            foreach($request->amenities as $amenityId) {
+                $amenity = new ListingAmenity();
+                $amenity->listing_id = $listing->id;
+                $amenity->amenity_id = $amenityId;
+                $amenity->save();
+            }
         }
 
         toastr()->success('Created Successfully!');
-
         return to_route('admin.listing.index');
-
     }
 
     /**
@@ -133,20 +133,20 @@ class ListingController extends Controller
         $listing->title = $request->title;
         $listing->slug = Str::slug($request->title);
         $listing->category_id = $request->category;
-        $listing->location_id = $request->location;
-        $listing->address = $request->address;
-        $listing->phone = $request->phone;
-        $listing->email = $request->email;
-        $listing->website = $request->website;
-        $listing->facebook_link = $request->facebook_link;
-        $listing->x_link = $request->x_link;
-        $listing->linkedin_link = $request->linkedin_link;
-        $listing->whatsapp_link = $request->whatsapp_link;
+        $listing->location_id = $request->location ?? null;
+        $listing->address = $request->address ?? null;
+        $listing->phone = $request->phone ?? null;
+        $listing->email = $request->email ?? null;
+        $listing->website = $request->website ?? null;
+        $listing->facebook_link = $request->facebook_link ?? null;
+        $listing->x_link = $request->x_link ?? null;
+        $listing->linkedin_link = $request->linkedin_link ?? null;
+        $listing->whatsapp_link = $request->whatsapp_link ?? null;
         $listing->file = !empty($attachmentPath) ? $attachmentPath : $request->old_attachment;
         $listing->description = $request->description;
-        $listing->google_map_embed_code = $request->google_map_embed_code;
-        $listing->seo_title = $request->seo_title;
-        $listing->seo_description = $request->seo_description;
+        $listing->google_map_embed_code = $request->google_map_embed_code ?? null;
+        $listing->seo_title = $request->seo_title ?? null;
+        $listing->seo_description = $request->seo_description ?? null;
         $listing->status = $request->status;
         $listing->is_featured = $request->is_featured;
         $listing->is_verified = $request->is_verified;
@@ -156,11 +156,13 @@ class ListingController extends Controller
 
         ListingAmenity::where('listing_id', $listing->id)->delete();
 
-        foreach($request->amenities as $amenityId) {
-            $amenity = new ListingAmenity();
-            $amenity->listing_id = $listing->id;
-            $amenity->amenity_id = $amenityId;
-            $amenity->save();
+        if ($request->amenities) {
+            foreach($request->amenities as $amenityId) {
+                $amenity = new ListingAmenity();
+                $amenity->listing_id = $listing->id;
+                $amenity->amenity_id = $amenityId;
+                $amenity->save();
+            }
         }
 
         toastr()->success('Updated Successfully!');

@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Company Name <span class="text-danger">*</span></label>
+                                            <label for="">Company Name</label>
                                             <select class="form-control" name="location">
                                                 <option value="">Select</option>
                                                 @foreach ($locations as $location)
