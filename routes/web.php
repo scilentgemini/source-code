@@ -19,6 +19,7 @@ use App\Models\ListingImageGallery;
 use App\Models\ListingSchedule;
 use App\Models\ListingVideoGallery;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,5 +124,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 });
+
+Route::post('/submit-application', [ApplicationController::class, 'submit'])
+    ->name('submit.application');
 
 require __DIR__.'/auth.php';
