@@ -15,15 +15,15 @@ class ListingStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['required', 'image', 'max:3000'],
-            'thumbnail_image' => ['required', 'image', 'max:3000'],
-            'title' => ['required', 'string', 'max:255', 'unique:listings,title'],
+            'title' => ['required', 'string', 'max:255'],
             'category' => ['required', 'integer'],
             'location' => ['nullable', 'integer'],
+            'image' => ['required','image', 'max:3000'],
+            'thumbnail_image' => ['required','image', 'max:3000'],
             'address' => ['nullable', 'string', 'max:255'],
             'phone' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
-            'website' => ['nullable','string'],
+            'website' => ['nullable', 'string', 'max:255'],
             'facebook_link' => ['nullable','url'],
             'x_link' => ['nullable','url'],
             'linkedin_link' => ['nullable','url'],
@@ -37,7 +37,6 @@ class ListingStoreRequest extends FormRequest
             'status' => ['required', 'boolean'],
             'is_featured' => ['required', 'boolean'],
             'is_verified' => ['required', 'boolean']
-
         ];
     }
 }

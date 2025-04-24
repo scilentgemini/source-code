@@ -12,7 +12,7 @@ use App\Models\Listing;
 use App\Models\ListingAmenity;
 use App\Models\Location;
 use App\Traits\FileUploadTrait;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -55,6 +55,8 @@ class ListingController extends Controller
      */
     public function store(ListingStoreRequest $request)
     {
+        $validated = $request->validated();
+        
         $imagePath = $this->uploadImage($request, 'image');
         $thumbnailPath = $this->uploadImage($request, 'thumbnail_image');
         $attachmentPath = $this->uploadImage($request, 'attachment');
@@ -64,32 +66,32 @@ class ListingController extends Controller
         $listing->package_id = 0;
         $listing->image = $imagePath;
         $listing->thumbnail_image = $thumbnailPath;
-        $listing->title = $request->title;
-        $listing->slug = Str::slug($request->title);
-        $listing->category_id = $request->category;
-        $listing->location_id = $request->location ?? null;
-        $listing->address = $request->address ?? null;
-        $listing->phone = $request->phone ?? null;
-        $listing->email = $request->email ?? null;
-        $listing->website = $request->website ?? null;
-        $listing->facebook_link = $request->facebook_link ?? null;
-        $listing->x_link = $request->x_link ?? null;
-        $listing->linkedin_link = $request->linkedin_link ?? null;
-        $listing->whatsapp_link = $request->whatsapp_link ?? null;
+        $listing->title = $validated['title'];
+        $listing->slug = Str::slug($validated['title']);
+        $listing->category_id = $validated['category'];
+        $listing->location_id = $validated['location'] ?? null;
+        $listing->address = $validated['address'] ?? null;
+        $listing->phone = $validated['phone'] ?? null;
+        $listing->email = $validated['email'] ?? null;
+        $listing->website = $validated['website'] ?? null;
+        $listing->facebook_link = $validated['facebook_link'] ?? null;
+        $listing->x_link = $validated['x_link'] ?? null;
+        $listing->linkedin_link = $validated['linkedin_link'] ?? null;
+        $listing->whatsapp_link = $validated['whatsapp_link'] ?? null;
         $listing->file = $attachmentPath;
-        $listing->description = $request->description;
-        $listing->google_map_embed_code = $request->google_map_embed_code ?? null;
-        $listing->seo_title = $request->seo_title ?? null;
-        $listing->seo_description = $request->seo_description ?? null;
-        $listing->status = $request->status;
-        $listing->is_featured = $request->is_featured;
-        $listing->is_verified = $request->is_verified;
+        $listing->description = $validated['description'];
+        $listing->google_map_embed_code = $validated['google_map_embed_code'] ?? null;
+        $listing->seo_title = $validated['seo_title'] ?? null;
+        $listing->seo_description = $validated['seo_description'] ?? null;
+        $listing->status = $validated['status'];
+        $listing->is_featured = $validated['is_featured'];
+        $listing->is_verified = $validated['is_verified'];
         $listing->expire_date = date('Y-m-d');
         $listing->is_approved = 1;
         $listing->save();
 
-        if ($request->amenities) {
-            foreach($request->amenities as $amenityId) {
+        if (isset($validated['amenities'])) {
+            foreach($validated['amenities'] as $amenityId) {
                 $amenity = new ListingAmenity();
                 $amenity->listing_id = $listing->id;
                 $amenity->amenity_id = $amenityId;
@@ -121,43 +123,43 @@ class ListingController extends Controller
     public function update(ListingUpdateRequest $request, string $id) : RedirectResponse
     {
         $listing = Listing::findOrFail($id);
+        $validated = $request->validated();
 
-        $imagePath = $this->uploadImage($request, 'image', $request->old_image);
-        $thumbnailPath = $this->uploadImage($request, 'thumbnail_image', $request->old_thumbnail_image);
-        $attachmentPath = $this->uploadImage($request, 'attachment', $request->old_attachment);
+        $imagePath = $this->uploadImage($request, 'image', $validated['old_image'] ?? null);
+        $thumbnailPath = $this->uploadImage($request, 'thumbnail_image', $validated['old_thumbnail_image'] ?? null);
+        $attachmentPath = $this->uploadImage($request, 'attachment', $validated['old_attachment'] ?? null);
 
         $listing->user_id = Auth::user()->id;
         $listing->package_id = 0;
-        $listing->image = !empty($imagePath) ? $imagePath : $request->old_image;
-        $listing->thumbnail_image = !empty($thumbnailPath) ? $thumbnailPath : $request->old_thumbnail_image;
-        $listing->title = $request->title;
-        $listing->slug = Str::slug($request->title);
-        $listing->category_id = $request->category;
-        $listing->location_id = $request->location ?? null;
-        $listing->address = $request->address ?? null;
-        $listing->phone = $request->phone ?? null;
-        $listing->email = $request->email ?? null;
-        $listing->website = $request->website ?? null;
-        $listing->facebook_link = $request->facebook_link ?? null;
-        $listing->x_link = $request->x_link ?? null;
-        $listing->linkedin_link = $request->linkedin_link ?? null;
-        $listing->whatsapp_link = $request->whatsapp_link ?? null;
-        $listing->file = !empty($attachmentPath) ? $attachmentPath : $request->old_attachment;
-        $listing->description = $request->description;
-        $listing->google_map_embed_code = $request->google_map_embed_code ?? null;
-        $listing->seo_title = $request->seo_title ?? null;
-        $listing->seo_description = $request->seo_description ?? null;
-        $listing->status = $request->status;
-        $listing->is_featured = $request->is_featured;
-        $listing->is_verified = $request->is_verified;
+        $listing->image = !empty($imagePath) ? $imagePath : ($validated['old_image'] ?? null);
+        $listing->thumbnail_image = !empty($thumbnailPath) ? $thumbnailPath : ($validated['old_thumbnail_image'] ?? null);
+        $listing->title = $validated['title'];
+        $listing->slug = Str::slug($validated['title']);
+        $listing->category_id = $validated['category'];
+        $listing->location_id = $validated['location'] ?? null;
+        $listing->address = $validated['address'] ?? null;
+        $listing->phone = $validated['phone'] ?? null;
+        $listing->email = $validated['email'] ?? null;
+        $listing->website = $validated['website'] ?? null;
+        $listing->facebook_link = $validated['facebook_link'] ?? null;
+        $listing->x_link = $validated['x_link'] ?? null;
+        $listing->linkedin_link = $validated['linkedin_link'] ?? null;
+        $listing->whatsapp_link = $validated['whatsapp_link'] ?? null;
+        $listing->file = !empty($attachmentPath) ? $attachmentPath : ($validated['old_attachment'] ?? null);
+        $listing->description = $validated['description'];
+        $listing->google_map_embed_code = $validated['google_map_embed_code'] ?? null;
+        $listing->seo_title = $validated['seo_title'] ?? null;
+        $listing->seo_description = $validated['seo_description'] ?? null;
+        $listing->status = $validated['status'];
+        $listing->is_featured = $validated['is_featured'];
+        $listing->is_verified = $validated['is_verified'];
         $listing->expire_date = date('Y-m-d');
-
         $listing->save();
 
         ListingAmenity::where('listing_id', $listing->id)->delete();
 
-        if ($request->amenities) {
-            foreach($request->amenities as $amenityId) {
+        if (isset($validated['amenities'])) {
+            foreach($validated['amenities'] as $amenityId) {
                 $amenity = new ListingAmenity();
                 $amenity->listing_id = $listing->id;
                 $amenity->amenity_id = $amenityId;
@@ -166,9 +168,7 @@ class ListingController extends Controller
         }
 
         toastr()->success('Updated Successfully!');
-
         return to_route('admin.listing.index');
-
     }
 
     /**

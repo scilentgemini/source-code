@@ -14,17 +14,19 @@ class ListingUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-       
         return [
-            'image' => ['image', 'max:3000'],
-            'thumbnail_image' => [ 'image', 'max:3000'],
-            'title' => ['required', 'string', 'max:255', 'unique:listings,title,'.$this->listing],
+            'title' => ['required', 'string', 'max:255'],
             'category' => ['required', 'integer'],
             'location' => ['nullable', 'integer'],
+            'image' => ['nullable','image', 'max:3000'],
+            'thumbnail_image' => ['nullable','image', 'max:3000'],
+            'old_image' => ['nullable'],
+            'old_thumbnail_image' => ['nullable'],
+            'old_attachment' => ['nullable'],
             'address' => ['nullable', 'string', 'max:255'],
             'phone' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
-            'website' => ['nullable','string'],
+            'website' => ['nullable', 'string', 'max:255'],
             'facebook_link' => ['nullable','url'],
             'x_link' => ['nullable','url'],
             'linkedin_link' => ['nullable','url'],
