@@ -20,6 +20,7 @@ use App\Models\ListingSchedule;
 use App\Models\ListingVideoGallery;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\Frontend\InterviewNoticeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ use App\Http\Controllers\ApplicationController;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('interview-notices', [InterviewNoticeController::class, 'index'])->name('interview-notices.index');
 Route::get('listings', [FrontendController::class, 'listings'])->name('listings');
 Route::get('listing-modal/{id}', [FrontendController::class, 'listingModal'])->name('listing-modal');
 Route::get('listing/{slug}', [FrontendController::class, 'showListing'])->name('listing.show');

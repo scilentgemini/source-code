@@ -58,6 +58,11 @@
                     <i class="fab fa-youtube"></i> <span>Manage YouTube Videos</span>
                 </a>
             </li>
+            <li class="{{ setSidebarActive(['admin.interview-notices.*']) }}">
+                <a class="nav-link" href="{{ route('admin.interview-notices.index') }}">
+                    <i class="fas fa-newspaper"></i> <span>Interview Notices</span>
+                </a>
+            </li>
 
 
             @can('section index')
@@ -230,6 +235,8 @@
             @can('settings index')
             <li class="{{ setSidebarActive(['admin.clear-database.index']) }}" ><a class="nav-link" href="{{ route('admin.clear-database.index') }}"><i class="fas fa-skull-crossbones"></i> <span>Wipe Database</span></a></li>
             @endcan
+
+
         </ul>
     </aside>
 </div>
