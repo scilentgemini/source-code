@@ -40,6 +40,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\YoutubeVideoController;
 
 
 Route::get('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login')->middleware('guest');
@@ -179,6 +180,8 @@ Route::group([
     Route::get('/clear-database', [ClearDatabaseController::class, 'index'])->name('clear-database.index');
     Route::post('/clear-database', [ClearDatabaseController::class, 'createDB'])->name('clear-database');
 
+    /** YouTube Video Routes */
+    Route::resource('youtube-videos', YoutubeVideoController::class);
 
 });
 

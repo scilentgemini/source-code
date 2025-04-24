@@ -4,7 +4,7 @@
     <!--==========================
             BANNER PART START
     ===========================-->
-    
+
     @include('frontend.home.sections.banner-section')
     <!--==========================
             BANNER PART END
@@ -63,6 +63,14 @@
     @include('frontend.home.sections.featured-listing-section')
     <!--==========================
             FEATURED LISTING END
+    ===========================-->
+
+    <!--==========================
+            YOUTUBE VIDEOS START
+    ===========================-->
+    @include('frontend.home.sections.youtube-videos-section')
+    <!--==========================
+            YOUTUBE VIDEOS END
     ===========================-->
 
     <!--==========================
