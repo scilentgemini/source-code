@@ -42,6 +42,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\YoutubeVideoController;
 use App\Http\Controllers\Admin\InterviewNoticeController;
+use App\Http\Controllers\Admin\CompanyServiceController;
 
 
 Route::get('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login')->middleware('guest');
@@ -186,6 +187,7 @@ Route::group([
 
     /** Interview Notice Routes */
     Route::resource('interview-notices', InterviewNoticeController::class);
+    Route::resource('company-services', CompanyServiceController::class);
 
 });
 

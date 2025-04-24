@@ -63,6 +63,11 @@
                     <i class="fas fa-newspaper"></i> <span>Interview Notices</span>
                 </a>
             </li>
+            <li class="{{ setSidebarActive(['admin.company-services.*']) }}">
+                <a class="nav-link" href="{{ route('admin.company-services.index') }}">
+                    <i class="fas fa-building"></i> <span>Company Services</span>
+                </a>
+            </li>
 
 
             @can('section index')
