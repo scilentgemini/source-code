@@ -39,6 +39,8 @@ use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BannerController;
+
 
 Route::get('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login')->middleware('guest');
 Route::get('/admin/forgot-password', [AdminAuthController::class, 'PasswordRequest'])->name('admin.password.request')->middleware('guest');
@@ -178,4 +180,10 @@ Route::group([
     Route::post('/clear-database', [ClearDatabaseController::class, 'createDB'])->name('clear-database');
 
 
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('banner', [BannerController::class, 'index'])->name('banner.index');
+    Route::post('banner', [BannerController::class, 'store'])->name('banner.store');
+    Route::delete('banner/{bannerImage}', [BannerController::class, 'destroy'])->name('banner.destroy');
 });

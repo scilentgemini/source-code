@@ -2,37 +2,38 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Events\CreateOrder;
-use App\Http\Controllers\Controller;
-use App\Mail\ContactMail;
-use App\Models\AboutUs;
-use App\Models\Amenity;
-use App\Models\Blog;
-use App\Models\BlogCategory;
-use App\Models\BlogComment;
-use App\Models\Category;
-use App\Models\Claim;
-use App\Models\Contact;
-use App\Models\Counter;
-use App\Models\Hero;
-use App\Models\Listing;
-use App\Models\ListingSchedule;
-use App\Models\Location;
-use App\Models\OurFeature;
-use App\Models\Package;
-use App\Models\PrivacyPolicy;
-use App\Models\Review;
-use App\Models\SectionTitle;
-use App\Models\TermsAndCondition;
-use App\Models\Testimonial;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
-use Illuminate\View\View;
 use Mail;
 use Session;
-
+use App\Models\Blog;
+use App\Models\Hero;
+use App\Models\Claim;
+use App\Models\Review;
+use App\Models\AboutUs;
+use App\Models\Amenity;
+use App\Models\Contact;
+use App\Models\Counter;
+use App\Models\Listing;
+use App\Models\Package;
+use App\Models\Category;
+use App\Models\Location;
+use App\Mail\ContactMail;
+use Illuminate\View\View;
+use App\Models\OurFeature;
+use App\Events\CreateOrder;
+use App\Models\BannerImage;
+use App\Models\BlogComment;
+use App\Models\Testimonial;
+use App\Models\BlogCategory;
+use App\Models\SectionTitle;
 use function Ramsey\Uuid\v1;
+use Illuminate\Http\Request;
+use App\Models\PrivacyPolicy;
+use App\Models\ListingSchedule;
+use App\Models\TermsAndCondition;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\ValidationException;
 
 class FrontendController extends Controller
 {
@@ -40,6 +41,8 @@ class FrontendController extends Controller
     {
         $sectionTitle = SectionTitle::first();
         $hero = Hero::first();
+        $heroImages  = BannerImage::all();
+        
         $ourFeatures = OurFeature::where('status', 1)->get();
         $categories = Category::where('status', 1)->get();
         $locations = Location::where('status', 1)->get();
@@ -102,7 +105,8 @@ class FrontendController extends Controller
                 'counter',
                 'testimonials',
                 'blogs',
-                'sectionTitle'
+                'sectionTitle',
+                'heroImages' // Added heroImages to pass to the view
             ));
     }
 

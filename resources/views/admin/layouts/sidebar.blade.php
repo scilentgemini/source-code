@@ -48,6 +48,12 @@
             <li class="menu-header">Starter</li>
             <li class="{{ setSidebarActive(['admin.dashboard.index']) }}"><a class="nav-link" href="{{ route('admin.dashboard.index') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
 
+            <li class="{{ setSidebarActive(['admin.banner.index']) }}">
+                <a class="nav-link" href="{{ route('admin.banner.index') }}">
+                    <i class="fas fa-images"></i> <span>Manage Banner Images</span>
+                </a>
+            </li>
+
             @can('section index')
             <li class="dropdown {{ setSidebarActive([
                 'admin.hero.index',

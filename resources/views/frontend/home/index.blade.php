@@ -4,6 +4,7 @@
     <!--==========================
             BANNER PART START
     ===========================-->
+    
     @include('frontend.home.sections.banner-section')
     <!--==========================
             BANNER PART END
