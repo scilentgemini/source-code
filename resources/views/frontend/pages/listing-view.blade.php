@@ -46,6 +46,9 @@
                             </div>
                             <div class="listing_det_header_text">
                                 <h6>{{ $listing->title }}</h6>
+                                <p class="listing-salary fs-4 fw-bold" style="color: var(--colorPrimary);">
+                                    Salary: {{ $listing->website ?? 'Not specified' }}
+                                  </p>
                                 <p class="host_name">Job Added By: <a
                                         href="agent_public_profile.html">{{ $listing->user->name ?? '-' }}</a></p>
                                 {{-- <p class="rating">
