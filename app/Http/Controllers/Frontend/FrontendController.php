@@ -85,13 +85,19 @@ class FrontendController extends Controller
 
 
         // featured listings
-        $featuredListings = Listing::withAvg(['reviews' => function($query) {
-                $query->where('is_approved', 1);
-            }], 'rating')->withCount(['reviews' => function($query) {
-                $query->where('is_approved', 1);
-            }])
-            ->where(['status' => 1, 'is_approved' => 1, 'is_featured' => 1])
-            ->orderBy('id', 'desc')->limit(10)->get();
+        $featuredListings = Listing::with(['gallery' => function($query) {
+            $query->select('listing_id', 'image')->orderBy('id');
+        }, 'location']) // Ensure location relationship is loaded
+        ->withAvg(['reviews' => function($query) {
+            $query->where('is_approved', 1);
+        }], 'rating')
+        ->withCount(['reviews' => function($query) {
+            $query->where('is_approved', 1);
+        }])
+        ->where(['status' => 1, 'is_approved' => 1, 'is_featured' => 1])
+        ->orderBy('id', 'desc')
+        ->limit(10)
+        ->get();
 
         return view('frontend.home.index',
             compact(
@@ -99,14 +105,14 @@ class FrontendController extends Controller
                 'categories',
                 'packages',
                 'featuredCategories',
-                'featuredListings',
+                'featuredListings', // Pass featured listings to the view
                 'locations',
                 'ourFeatures',
                 'counter',
                 'testimonials',
                 'blogs',
                 'sectionTitle',
-                'heroImages' // Added heroImages to pass to the view
+                'heroImages'
             ));
     }
 
