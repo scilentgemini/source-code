@@ -27,6 +27,31 @@
         :root {
             --colorPrimary: {{ config('settings.site_default_color') }};
         }
+        .whatsapp_btn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .whatsapp_btn:hover {
+            background-color: #128C7E;
+            color: white;
+            transform: scale(1.1);
+        }
+        .whatsapp_btn i {
+            font-size: 24px;
+        }
     </style>
 
     @stack('styles')
@@ -91,6 +116,9 @@
 
 
     <!--=============SCROLL BTN==============-->
+    <a href="https://wa.me/971506939322" target="_blank" class="whatsapp_btn" title="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
     <div class="scroll_btn">
         <i class="fas fa-chevron-up"></i>
     </div>

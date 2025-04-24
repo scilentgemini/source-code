@@ -3,48 +3,48 @@
 @endphp
 
 @if($videos->isNotEmpty())
-<section id="youtube-videos" class="wsus__blog mt_90 xs_mt_60">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-5 m-auto">
-                <div class="wsus__heading_area">
-                    <h2>Featured Videos</h2>
-                    <p>Watch our latest videos</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row video_slider">
-            @foreach($videos as $video)
-                <div class="col-xl-4 col-md-6">
-                    <div class="wsus__single_blog">
-                        <div class="wsus__blog_img youtube-video-container">
-                            @php
-                                $videoId = '';
-                                if (preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $video->video_url, $match)) {
-                                    $videoId = $match[1];
-                                }
-                            @endphp
-                            <iframe
-                                width="100%"
-                                height="250"
-                                src="https://www.youtube.com/embed/{{ $videoId }}"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <div class="wsus__blog_text">
-                            <h4>{{ $video->title }}</h4>
-                            @if($video->description)
-                                <p>{{ Str::limit($video->description, 100) }}</p>
-                            @endif
-                            <a class="read_btn" href="{{ $video->video_url }}" target="_blank">Watch on YouTube <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
+<section id="wsus__youtube_videos" style="background-color: #f5f5f5;">
+    <div class="wsus__location_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 m-auto">
+                    <div class="wsus__heading_area">
+                        <h2>Featured Videos</h2>
+                        <p>Watch our latest videos</p>
                     </div>
                 </div>
-            @endforeach
+            </div>
+            <div class="row video_slider">
+                @foreach($videos as $video)
+                    <div class="col-xl-4 col-md-6">
+                        <div class="wsus__single_blog" style="margin: 15px;">
+                            <div class="wsus__blog_img youtube-video-container">
+                                @php
+                                    $videoId = '';
+                                    if (preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $video->video_url, $match)) {
+                                        $videoId = $match[1];
+                                    }
+                                @endphp
+                                <iframe
+                                    width="100%"
+                                    height="250"
+                                    src="https://www.youtube.com/embed/{{ $videoId }}"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="wsus__blog_text">
+                                <h4>{{ $video->title }}</h4>
+                                @if($video->description)
+                                    <p>{{ Str::limit($video->description, 100) }}</p>
+                                @endif
+                                <a class="read_btn" href="{{ $video->video_url }}" target="_blank">Watch on YouTube <i class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 </section>
@@ -65,19 +65,29 @@
     height: 100%;
     border-radius: 5px;
 }
+
+.video_slider .slick-slide {
+    padding: 0 15px;
+}
+
+.video_slider .slick-list {
+    margin: 0 -15px;
+}
 </style>
 
 @push('scripts')
 <script>
     $(document).ready(function() {
         $('.video_slider').slick({
-            dots: true,
+            dots: false,
+            arrows: false,
             infinite: true,
-            speed: 300,
+            speed: 800,
             slidesToShow: 3,
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 3000,
+            cssEase: 'linear',
             responsive: [
                 {
                     breakpoint: 1024,
