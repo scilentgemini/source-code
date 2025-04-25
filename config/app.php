@@ -170,7 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\SettingsProvider::class,
         App\Providers\PaymentSettingProvider::class,
-
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ])->toArray(),
 

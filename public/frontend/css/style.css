@@ -5367,3 +5367,195 @@ AGENT PROFILE END
     background: var(--colorPrimary);
     color: var(--colorWhite);
 }
+
+
+/* ==================================
+    SIGNIN START
+=================================== */
+.wsus__login_page {
+	padding: 100px 0px;
+}
+
+.wsus__login_area {
+	background: #f6654212;
+	padding: 50px;
+	overflow: hidden;
+	border-radius: 5px;
+}
+
+.wsus__login_area h2 {
+	font-weight: 700;
+	font-size: 42px;
+	color: var(--colorBlack);
+	text-transform: capitalize;
+	margin-bottom: 5px;
+}
+
+.wsus__login_area p {
+	color: var(--colorBlack);
+	text-transform: capitalize;
+	margin-bottom: 25px;
+}
+
+.wsus__login_area .wsus__login_imput {
+	margin-bottom: 20px;
+}
+
+.wsus__login_area form label {
+	text-transform: capitalize;
+	font-size: 15px;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+
+.wsus__login_area form input {
+	border: none;
+}
+
+.wsus__login_area form button {
+	width: 100%;
+	border-radius: 5px;
+	text-align: center;
+	border: none;
+	background: var(--colorPrimary);
+	color: var(--colorWhite);
+	padding: 13px 20px;
+	transition: all linear .3s;
+	-webkit-transition: all linear .3s;
+	-moz-transition: all linear .3s;
+	-ms-transition: all linear .3s;
+	-o-transition: all linear .3s;
+}
+
+.wsus__login_area form button:hover {
+	background: var(--colorBlack);
+}
+
+.wsus__login_check_area {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.wsus__login_area .form-check input {
+	padding: 0px;
+	border-radius: 50%;
+	border: 1px solid var(--colorPrimary);
+}
+
+.wsus__login_area .form-check input:checked {
+	background-color: var(--colorPrimary);
+	border-color: var(--colorPrimary);
+}
+
+.form-check-input:focus {
+	box-shadow: none;
+}
+
+.wsus__login_area .form-check label {
+	color: var(--paraColor);
+	margin: 0px;
+	text-transform: capitalize;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.wsus__login_imput a {
+	text-transform: capitalize;
+	font-size: 16px;
+	font-weight: 400;
+	color: var(--colorPrimary);
+	transition: all 0.3s linear 0s;
+	-webkit-transition: all 0.3s linear 0s;
+	-moz-transition: all 0.3s linear 0s;
+	-ms-transition: all 0.3s linear 0s;
+	-o-transition: all 0.3s linear 0s;
+}
+
+.wsus__login_imput a:hover {
+	color: var(--colorBlack);
+}
+
+.wsus__login_area .or {
+	position: relative;
+	margin: 15px 0px 30px;
+}
+
+.wsus__login_area .or span {
+	text-transform: uppercase;
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	background: var(--colorPrimary);
+	font-size: 13px;
+	text-align: center;
+	line-height: 27px;
+	color: var(--colorWhite);
+	border-radius: 3px;
+	position: relative;
+	z-index: 1;
+}
+
+.wsus__login_area .or::after {
+	position: absolute;
+	content: "";
+	background: var(--colorPrimary);
+	width: 98%;
+	height: 1px;
+	top: 50%;
+	right: 0px;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+}
+
+.wsus__login_area ul li a {
+	width: 35px;
+	height: 35px;
+	background: var(--colorPrimary);
+	color: var(--colorWhite);
+	text-align: center;
+	line-height: 35px;
+	border-radius: 50%;
+	margin-right: 5px;
+	font-size: 14px;
+	border: 1px solid transparent;
+	transition: all 0.3s linear 0s;
+	-webkit-transition: all 0.3s linear 0s;
+	-moz-transition: all 0.3s linear 0s;
+	-ms-transition: all 0.3s linear 0s;
+	-o-transition: all 0.3s linear 0s;
+}
+
+.wsus__login_area ul li a:hover {
+	border-color: var(--colorPrimary);
+	color: var(--colorPrimary);
+	background: var(--colorWhite);
+}
+
+.wsus__login_area .create_account {
+	margin-top: 30px;
+	color: var(--paraColor);
+	margin-bottom: 0px;
+}
+
+.wsus__login_area .create_account a {
+	color: var(--colorPrimary);
+	text-transform: capitalize;
+	font-weight: 500;
+	transition: all 0.3s linear 0s;
+	-webkit-transition: all 0.3s linear 0s;
+	-moz-transition: all 0.3s linear 0s;
+	-ms-transition: all 0.3s linear 0s;
+	-o-transition: all 0.3s linear 0s;
+}
+
+.wsus__login_area .create_account a:hover {
+	color: var(--colorBlack);
+}
+
+/* ==================================
+    SIGNIN END
+=================================== */
