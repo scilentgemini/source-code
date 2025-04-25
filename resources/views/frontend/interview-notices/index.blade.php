@@ -1,6 +1,30 @@
 @extends('frontend.layouts.master')
 
 @section('contents')
+
+    <!--==========================
+        BREADCRUMB PART START
+    ===========================-->
+    <div id="breadcrumb_part">
+        <div class="bread_overlay">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center text-white">
+                        <h4>Interview Notice</h4>
+                        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"> Home </a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Interview Notice </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==========================
+        BREADCRUMB PART END
+    ===========================-->
 <section class="section" style="padding: 60px 0;">
     <div class="container">
         <div class="row">
