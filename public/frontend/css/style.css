@@ -31,7 +31,9 @@ h6 {
 	margin: 0;
 	padding: 0;
 	font-family: var(--headingFont);
-	color: var(--colorBlack);
+	/* color: var(--colorBlack); */
+    color: var(--colorPrimary);
+
 }
 
 p,
@@ -737,13 +739,13 @@ button {
 }
 
 .wsus__heading_area h2 {
-	font-size: 35px;
-	font-weight: 600;
-	/* margin: 15px 0px 40px 0px; */
-	position: relative;
-	color: var(--colorBlack);
-	text-transform: capitalize;
-	display: inline-block;
+    font-size: 35px;
+    font-weight: 600;
+    /* margin: 15px 0px 40px 0px; */
+    position: relative;
+    color: var(--colorPrimary);
+    text-transform: capitalize;
+    display: inline-block;
 }
 
 .wsus__heading_area h2::after {
@@ -1825,10 +1827,10 @@ FEATURED LISTING  END
 	color: var(--colorBlack);
 	margin-right: 5px;
 	transition: all linear .3s;
-	-webkit-transition: all linear .3s;
-	-moz-transition: all linear .3s;
-	-ms-transition: all linear .3s;
-	-o-transition: all linear .3s;
+	-webkit-transition: all linear .3s ease;
+	-moz-transition: all linear .3s ease;
+	-ms-transition: all linear .3s ease;
+	-o-transition: all linear .3s ease;
 }
 
 .single_blog .title {

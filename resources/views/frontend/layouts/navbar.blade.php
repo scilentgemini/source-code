@@ -9,7 +9,67 @@
         max-height: 60px;
         width: auto;
     }
+
+    #wsus__topbar {
+        background: #1a4789;
+        padding: 4px 0;
+    }
+
+    #wsus__topbar .container {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .wsus__topbar_left {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .wsus__topbar_left li a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        padding-left: 0;
+    }
+
+    .wsus__topbar_left li a i {
+        margin-right: 6px;
+    }
+
+    .wsus__topbar_right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+    }
+
+    .wsus__topbar_right span {
+        color: #ffffff;
+        font-size: 14px;
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .wsus__topbar_right span:first-child {
+        margin-left: 0;
+    }
+
+    .wsus__topbar_right span i {
+        margin-right: 5px;
+        font-size: 14px;
+    }
+
+    #wsus__topbar .row {
+        align-items: center;
+        min-height: 30px;
+    }
 </style>
+
 <!--==========================
         TOPBAR PART START
     ===========================-->
@@ -18,20 +78,13 @@
         <div class="row">
             <div class="col-xl-6 col-md-7 d-none d-md-block">
                 <ul class="wsus__topbar_left">
-                    <li><a href="mailto:{{ config('settings.site_email') }}"><i class="fal fa-envelope"></i>
-                            {{ config('settings.site_email') }}</a></li>
-                    <li><a href="callto:{{ config('settings.site_phone') }}"><i
-                                class="fal fa-phone-alt"></i>{{ config('settings.site_phone') }}</a></li>
+                    <li><a href="mailto:{{ config('settings.site_email') }}"><i class="fal fa-envelope"></i>{{ config('settings.site_email') }}</a></li>
                 </ul>
             </div>
             <div class="col-xl-6 col-md-5">
                 <div class="wsus__topbar_right">
-                    {{-- @auth
-                            <a href="{{ route('user.dashboard') }}"><i class="fas fa-user"></i> Dashboard</a>
-                        @endauth
-                        @guest
-                            <a href="{{ route('login') }}"><i class="fas fa-user"></i> Login</a>
-                        @endguest --}}
+                    <span><i class="fal fa-phone-alt"></i>+971 50 693 9322</span>
+                    <span><i class="fal fa-phone-alt"></i>9803507666</span>
                 </div>
             </div>
         </div>
