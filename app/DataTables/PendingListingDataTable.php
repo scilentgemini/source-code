@@ -105,11 +105,10 @@ class PendingListingDataTable extends DataTable
             Column::make('id'),
             Column::make('image'),
             Column::make('title'),
-            Column::make('category'),
-            Column::make('location'),
+            Column::make('category')->title('Country'),
+            Column::make('location')->title('Company'),
             Column::make('by'),
             Column::make('status'),
-
             Column::computed('action')
             ->exportable(false)
             ->printable(false)
