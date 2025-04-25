@@ -113,12 +113,11 @@ class ListingDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-
             Column::make('id'),
             Column::make('image'),
             Column::make('title'),
-            Column::make('category'),
-            Column::make('location'),
+            Column::make('category')->title('Country'),
+            Column::make('location')->title('Company'),
             Column::make('status'),
             Column::make('is_featured')->width(80),
             Column::make('is_verified')->width(80),
