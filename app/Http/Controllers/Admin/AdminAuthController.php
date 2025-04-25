@@ -14,7 +14,8 @@ class AdminAuthController extends Controller
         return redirect()->route('login');
     }
 
-    function PasswordRequest() : View {
-        return view('admin.auth.forgot-password');
+    function PasswordRequest() : RedirectResponse
+    {
+        return redirect()->route('password.request');
     }
 }
