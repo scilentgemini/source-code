@@ -51,6 +51,7 @@
             Featured LOCATION START
     ===========================-->
     @include('frontend.home.sections.featured-location-section')
+{{-- ready for deployment --}}
 
     <!--==========================
             Featured LOCATION END
