@@ -55,12 +55,10 @@
 
 @push('scripts')
     <script>
-
         $(document).ready(function(){
             setTimeout(function(){
                 $('.l_first_tab').trigger('click');
             }, 1000);
         })
-
     </script>
 @endpush

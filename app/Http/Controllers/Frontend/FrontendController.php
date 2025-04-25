@@ -43,9 +43,13 @@ class FrontendController extends Controller
         $sectionTitle = SectionTitle::first();
         $hero = Hero::first();
         $heroImages  = BannerImage::all();
-        
+
         $ourFeatures = OurFeature::where('status', 1)->get();
-        $categories = Category::where('status', 1)->get();
+        $categories = Category::with(['listings' => function($query) {
+            $query->where(['status' => 1, 'is_approved' => 1])
+                ->latest('created_at')
+                ->take(8);
+        }])->where('status', 1)->get();
         $locations = Location::where('status', 1)->get();
         $packages = Package::where('status', 1)->where('show_at_home', 1)->take(3)->get();
         $counter = Counter::first();
@@ -66,9 +70,12 @@ class FrontendController extends Controller
                 $query->where('is_approved', 1);
             }])
             ->where(['status' => 1, 'is_approved' => 1])
-            ->orderBy('id', 'desc')
-            ->take(8);
-        }])->where(['show_at_home' => 1, 'status' => 1])->get();
+            ->latest('created_at')
+            ->take(6);
+        }])->where(['show_at_home' => 1, 'status' => 1])
+        ->latest('created_at')
+        ->take(6)
+        ->get();
 
         // featured listings
         $featuredListings = Listing::with(['gallery' => function($query) {
@@ -81,8 +88,8 @@ class FrontendController extends Controller
             $query->where('is_approved', 1);
         }])
         ->where(['status' => 1, 'is_approved' => 1, 'is_featured' => 1])
-        ->orderBy('id', 'desc')
-        ->limit(10)
+        ->latest('created_at')
+        ->limit(6)
         ->get();
 
         return view('frontend.home.index',
@@ -99,7 +106,8 @@ class FrontendController extends Controller
                 'blogs',
                 'sectionTitle',
                 'heroImages',
-                'youtubeVideos'
+                'youtubeVideos',
+                'featuredLocations'
             ));
     }
 

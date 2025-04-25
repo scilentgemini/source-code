@@ -2,7 +2,7 @@ $(function () {
 
   "use strict";
 
-  //=========MENU FIX JS=========   
+  //=========MENU FIX JS=========
   if ($('.main_menu').offset() != undefined) {
     var navoff = $('.main_menu').offset().top;
     $(window).scroll(function () {
@@ -17,11 +17,11 @@ $(function () {
   }
 
 
-  //=========COUNTER JS=========   
+  //=========COUNTER JS=========
   $('.counter').countUp();
 
 
-  //=======SELECT2====== 
+  //=======SELECT2======
   $(document).ready(function () {
     $('.select_2').select2();
   });
@@ -31,7 +31,7 @@ $(function () {
   $('.venobox').venobox();
 
 
-  //*==========ISOTOPE============== 
+  //*==========ISOTOPE==============
   jQuery(function ($) {
     var grid = $('.grid').isotope({});
 
@@ -50,9 +50,9 @@ $(function () {
 
   });
 
-  //=========LISTING SLIDER=========   
+  //=========LISTING SLIDER=========
   $('.listing_slider').slick({
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 2000,
@@ -63,7 +63,7 @@ $(function () {
       {
         breakpoint: 1400,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 1,
           dots: true,
           arrows: false,
@@ -110,7 +110,7 @@ $(function () {
 
 
 
-  //*=====TESTIMONIAL SLIDER===== 
+  //*=====TESTIMONIAL SLIDER=====
   $('.testi_slider').slick({
     slidesToShow: 2,
     slidesToScroll: 1,
@@ -148,7 +148,7 @@ $(function () {
   });
 
 
-  //*==========SCROLL BUTTON==========  
+  //*==========SCROLL BUTTON==========
   $('.scroll_btn').on('click', function () {
     $('html, body').animate({
       scrollTop: 0,
@@ -168,7 +168,7 @@ $(function () {
   });
 
 
-  //=========ABOUT PAGE SLIDER=========   
+  //=========ABOUT PAGE SLIDER=========
   $('.about_page_slider').slick({
     slidesToShow: 6,
     slidesToScroll: 1,
@@ -211,7 +211,7 @@ $(function () {
   });
 
 
-  //=========== ADD ROW JS===========   
+  //=========== ADD ROW JS===========
   $("#add_row").on('click', function () {
     var html = '';
     html += '<div  id="remove">';
@@ -287,7 +287,7 @@ $(function () {
   });
 
 
-  //*==========DASHBOARD MENU==========  
+  //*==========DASHBOARD MENU==========
 
   $('.menu_icon').on('click', function () {
     $('.dashboard_sidebar').addClass('.menu_show');
@@ -301,7 +301,7 @@ $(function () {
 
 
 
-  //=========CATEGORY SLIDER=========   
+  //=========CATEGORY SLIDER=========
   $('.category_slider').slick({
     slidesToShow: 6,
     slidesToScroll: 1,

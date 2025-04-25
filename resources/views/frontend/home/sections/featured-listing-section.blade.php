@@ -10,9 +10,9 @@
         </div>
     </div>
     <div class="container">
-        <div class="row listing_slider">
+        <div class="row">
             @foreach ($featuredListings as $listing)
-                <div class="col-xl-4 col-sm-6">
+                <div class="col-xl-4 col-sm-6 mb-4">
                     <div class="wsus__featured_single">
                         <div class="wsus__featured_single_img">
                             <img src="{{ asset($listing->image) }}" alt="{{ $listing->title }}" class="img-fluid w-100">
@@ -34,11 +34,11 @@
                             </p> --}}
                             <a href="{{ route('listing.show', $listing->slug) }}">{{ truncate($listing->title) }}</a>
                             <p class="address">{{ $listing->location->name }}</p>
+                            <p class="date text-muted"><small>Posted: {{ $listing->created_at->diffForHumans() }}</small></p>
                         </div>
                     </div>
                 </div>
             @endforeach
-
         </div>
     </div>
 </section>
