@@ -1,8 +1,4 @@
-@php
-    $videos = \App\Models\YoutubeVideo::where('status', 1)->orderBy('sort_order', 'asc')->get();
-@endphp
-
-@if($videos->isNotEmpty())
+@if($youtubeVideos->isNotEmpty())
 <section id="wsus__youtube_videos" style="background-color: #f5f5f5;">
     <div class="wsus__location_overlay">
         <div class="container">
@@ -15,31 +11,28 @@
                 </div>
             </div>
             <div class="row video_slider">
-                @foreach($videos as $video)
+                @foreach($youtubeVideos as $video)
                     <div class="col-xl-4 col-md-6">
-                        <div class="wsus__single_blog" style="margin: 15px;">
-                            <div class="wsus__blog_img youtube-video-container">
+                        <div class="listing_det_video">
+                            <div class="listing_det_video_img">
                                 @php
                                     $videoId = '';
+                                    $thumbnailUrl = '';
                                     if (preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $video->video_url, $match)) {
                                         $videoId = $match[1];
+                                        $thumbnailUrl = "https://img.youtube.com/vi/{$videoId}/maxresdefault.jpg";
                                     }
                                 @endphp
-                                <iframe
-                                    width="100%"
-                                    height="250"
-                                    src="https://www.youtube.com/embed/{{ $videoId }}"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                                </iframe>
+                                <img src="{{ $thumbnailUrl }}" alt="{{ $video->title }}">
+                                <a href="{{ $video->video_url }}" class="venobox" data-vbtype="video">
+                                    <i class="fas fa-play"></i>
+                                </a>
                             </div>
-                            <div class="wsus__blog_text">
-                                <h4>{{ $video->title }}</h4>
+                            <div class="wsus__featured_single_text">
+                                <h6>{{ $video->title }}</h6>
                                 @if($video->description)
                                     <p>{{ Str::limit($video->description, 100) }}</p>
                                 @endif
-                                <a class="read_btn" href="{{ $video->video_url }}" target="_blank">Watch on YouTube <i class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -50,22 +43,6 @@
 </section>
 
 <style>
-.youtube-video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-}
-
-.youtube-video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-}
-
 .video_slider .slick-slide {
     padding: 0 15px;
 }
@@ -73,13 +50,43 @@
 .video_slider .slick-list {
     margin: 0 -15px;
 }
+
+.video_slider .slick-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 0;
+    list-style: none;
+    gap: 8px;
+}
+
+.video_slider .slick-dots li {
+    margin: 0;
+}
+
+.video_slider .slick-dots li button {
+    font-size: 0;
+    width: 25px;
+    height: 4px;
+    background: #ddd;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 0;
+    transition: all linear 0.3s;
+}
+
+.video_slider .slick-dots li.slick-active button {
+    background: var(--colorPrimary);
+    width: 35px;
+}
 </style>
 
 @push('scripts')
 <script>
     $(document).ready(function() {
         $('.video_slider').slick({
-            dots: false,
+            dots: true,
             arrows: false,
             infinite: true,
             speed: 800,
@@ -87,17 +94,16 @@
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 3000,
-            cssEase: 'linear',
             responsive: [
                 {
-                    breakpoint: 1024,
+                    breakpoint: 1200,
                     settings: {
                         slidesToShow: 2,
                         slidesToScroll: 1
                     }
                 },
                 {
-                    breakpoint: 600,
+                    breakpoint: 768,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1

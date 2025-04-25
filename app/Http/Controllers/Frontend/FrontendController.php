@@ -16,6 +16,7 @@ use App\Models\Listing;
 use App\Models\Package;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\YoutubeVideo;
 use App\Mail\ContactMail;
 use Illuminate\View\View;
 use App\Models\OurFeature;
@@ -50,13 +51,14 @@ class FrontendController extends Controller
         $counter = Counter::first();
         $testimonials = Testimonial::where('status', 1)->get();
         $blogs = Blog::with('author')->where('status', 1)->orderBy('id', 'Desc')->take(3)->get();
+        $youtubeVideos = YoutubeVideo::where('status', 1)->orderBy('sort_order', 'asc')->get();
 
         $featuredCategories = Category::withCount(['listings'=> function($query){
             $query->where('is_approved', 1);
         }])->where(['show_at_home' => 1, 'status' => 1])->take(6)->get();
 
         // Featured location
-        $categories = Category::with(['listings' => function($query) {
+        $featuredLocations = Location::with(['listings' => function($query) {
             $query->withAvg(['reviews' => function($query) {
                 $query->where('is_approved', 1);
             }], 'rating')
@@ -65,29 +67,13 @@ class FrontendController extends Controller
             }])
             ->where(['status' => 1, 'is_approved' => 1])
             ->orderBy('id', 'desc')
-            ->limit(8);
+            ->take(8);
         }])->where(['show_at_home' => 1, 'status' => 1])->get();
-
-        $featuredLocations = Location::where(['show_at_home' => 1, 'status' => 1])->get();
-
-        $featuredLocations->each(function($location) {
-            $location->listings = $location->listings()
-            ->withAvg(['reviews' => function($query) {
-                $query->where('is_approved', 1);
-            }], 'rating')
-            ->withCount(['reviews' => function($query) {
-                $query->where('is_approved', 1);
-            }])
-            ->where(['status' => 1, 'is_approved' => 1])
-            ->orderBy('id', 'desc')
-            ->take(8)->get();
-        });
-
 
         // featured listings
         $featuredListings = Listing::with(['gallery' => function($query) {
             $query->select('listing_id', 'image')->orderBy('id');
-        }, 'location']) // Ensure location relationship is loaded
+        }, 'location'])
         ->withAvg(['reviews' => function($query) {
             $query->where('is_approved', 1);
         }], 'rating')
@@ -105,14 +91,15 @@ class FrontendController extends Controller
                 'categories',
                 'packages',
                 'featuredCategories',
-                'featuredListings', // Pass featured listings to the view
+                'featuredListings',
                 'locations',
                 'ourFeatures',
                 'counter',
                 'testimonials',
                 'blogs',
                 'sectionTitle',
-                'heroImages'
+                'heroImages',
+                'youtubeVideos'
             ));
     }
 

@@ -56,7 +56,12 @@ class YoutubeVideoController extends Controller
 
     public function destroy(YoutubeVideo $youtubeVideo)
     {
-        $youtubeVideo->delete();
-        return redirect()->route('admin.youtube-videos.index')->with('success', 'Video deleted successfully');
+        try {
+            $youtubeVideo->delete();
+            return response(['status' => 'success', 'message' => 'Video deleted successfully']);
+        } catch(\Exception $e) {
+            logger($e);
+            return response(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 }
