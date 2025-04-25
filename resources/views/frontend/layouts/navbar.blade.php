@@ -84,7 +84,7 @@
             <div class="col-xl-6 col-md-5">
                 <div class="wsus__topbar_right">
                     <span><i class="fal fa-phone-alt"></i>+971 50 693 9322</span>
-                    <span><i class="fal fa-phone-alt"></i>9803507666</span>
+                    <span><i class="fal fa-phone-alt"></i>+971 558 747 819</span>
                 </div>
             </div>
         </div>

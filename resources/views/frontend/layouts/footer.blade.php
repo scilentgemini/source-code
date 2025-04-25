@@ -53,6 +53,7 @@
                         </li>
                         <li><a href="mailto:{{ $footerInfo?->email }}"><i class="fal fa-envelope"></i> {{ $footerInfo?->email }}</a></li>
                         <li><a href="callto:{{ $footerInfo?->phone }}"><i class="fal fa-phone-alt"></i> {{ $footerInfo?->phone }}</a></li>
+                        <li><a href="callto:+971558747819"><i class="fal fa-phone-alt"></i> +971 558 747 819</a></li>
                     </ul>
                 </div>
             </div>
