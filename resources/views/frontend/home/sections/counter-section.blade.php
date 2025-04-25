@@ -32,7 +32,7 @@
 
                 <!-- NEW “Message from Director” SECTION -->
                 <div class="col-lg-6">
-                    <img src="{{ asset('uploads/hari-dhami.jpg') }}"
+                    <img src="{{ asset('frontend/images/royalLogo.png') }}"
                          alt="Director Photo"
                          class="img-fluid rounded shadow-sm w-75">
                 </div>
