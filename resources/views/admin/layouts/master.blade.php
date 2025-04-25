@@ -38,6 +38,7 @@
 </head>
 
 <body>
+    @include('components.loading-animation')
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
             @include('admin.layouts.sidebar')

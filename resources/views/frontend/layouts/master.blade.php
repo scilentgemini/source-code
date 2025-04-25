@@ -68,7 +68,7 @@
 </head>
 
 <body>
-
+    @include('components.loading-animation')
     <!--==========================
         Navbar Start
     ===========================-->
