@@ -49,9 +49,9 @@
                         <img style="width: 442px !important;
                         height: 500px !important;" src="{{ asset($about?->image) }}" alt="about" class="img-fluid w-100">
 
-                        <div class="img_2">
+                        {{-- <div class="img_2">
                             <img src="{{ asset($about?->image) }}" alt="about" class="img-fluid w-100">
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
