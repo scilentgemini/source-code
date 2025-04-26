@@ -70,7 +70,7 @@
       <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
           <div class="card-icon bg-danger">
-            <i class="fas fa-list-ol"></i>
+            <i class="fas fa-globe"></i>
           </div>
           <div class="card-wrap">
             <div class="card-header">
@@ -86,7 +86,7 @@
       <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
           <div class="card-icon bg-info">
-            <i class="fas fa-location-arrow"></i>
+            <i class="fas fa-building"></i>
           </div>
           <div class="card-wrap">
             <div class="card-header">
@@ -127,6 +127,38 @@
             </div>
             <div class="card-body">
               {{ $blogCategoryCount }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+        <div class="card card-statistic-1">
+          <div class="card-icon bg-success">
+            <i class="fab fa-youtube"></i>
+          </div>
+          <div class="card-wrap">
+            <div class="card-header">
+              <h4>Total YouTube Videos</h4>
+            </div>
+            <div class="card-body">
+              {{ $youtubeVideoCount }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+        <div class="card card-statistic-1">
+          <div class="card-icon bg-info">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="card-wrap">
+            <div class="card-header">
+              <h4>Total Interview Notices</h4>
+            </div>
+            <div class="card-body">
+              {{ $interviewNoticeCount }}
             </div>
           </div>
         </div>

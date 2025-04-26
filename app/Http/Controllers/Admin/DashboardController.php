@@ -7,11 +7,13 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Category;
 use App\Models\Claim;
+use App\Models\InterviewNotice;
 use App\Models\Listing;
 use App\Models\Location;
 use App\Models\Order;
 use App\Models\Testimonial;
 use App\Models\User;
+use App\Models\YoutubeVideo;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Locale;
@@ -33,6 +35,8 @@ class DashboardController extends Controller
         $permissionCount = Permission::count();
         $roleCount = Role::count();
         $totalTestimonials = Testimonial::count();
+        $youtubeVideoCount = YoutubeVideo::count();
+        $interviewNoticeCount = InterviewNotice::count();
 
 
         return view('admin.dashboard.index', compact(
@@ -47,7 +51,9 @@ class DashboardController extends Controller
             'adminCount',
             'permissionCount',
             'roleCount',
-            'totalTestimonials'
+            'totalTestimonials',
+            'youtubeVideoCount',
+            'interviewNoticeCount'
         ));
     }
 }
