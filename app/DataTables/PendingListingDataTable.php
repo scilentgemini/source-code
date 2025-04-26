@@ -23,47 +23,48 @@ class PendingListingDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->addColumn('action', function($query){
-            $edit = '<a href="'.route('admin.listing.edit', $query->id).'" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>';
-            $delete = '<a href="'.route('admin.listing.destroy', $query->id).'" class="delete-item btn btn-sm btn-danger ml-2"><i class="fas fa-trash"></i></a>';
+            ->addIndexColumn()
+            ->addColumn('action', function($query){
+                $edit = '<a href="'.route('admin.listing.edit', $query->id).'" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>';
+                $delete = '<a href="'.route('admin.listing.destroy', $query->id).'" class="delete-item btn btn-sm btn-danger ml-2"><i class="fas fa-trash"></i></a>';
 
-            $more = '<div class="btn-group dropleft">
-            <button type="button" class="btn btn-sm ml-2 btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-cog"></i>
-            </button>
-            <div class="dropdown-menu dropleft" x-placement="left-start" style="position: absolute; transform: translate3d(-2px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
-              <a class="dropdown-item" href="'.route('admin.listing-image-gallery.index', ['id' => $query->id]).'">Image Gallery</a>
-              <a class="dropdown-item" href="'.route('admin.listing-video-gallery.index', ['id' => $query->id]).'">Video Gallery</a>
-              <a class="dropdown-item" href="'.route('admin.listing-schedule.index', $query->id).'">Sehedule</a>
+                $more = '<div class="btn-group dropleft">
+                <button type="button" class="btn btn-sm ml-2 btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-cog"></i>
+                </button>
+                <div class="dropdown-menu dropleft" x-placement="left-start" style="position: absolute; transform: translate3d(-2px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
+                  <a class="dropdown-item" href="'.route('admin.listing-image-gallery.index', ['id' => $query->id]).'">Image Gallery</a>
+                  <a class="dropdown-item" href="'.route('admin.listing-video-gallery.index', ['id' => $query->id]).'">Video Gallery</a>
+                  <a class="dropdown-item" href="'.route('admin.listing-schedule.index', $query->id).'">Sehedule</a>
 
-            </div>
-          </div>';
+                </div>
+              </div>';
 
-            return $edit.$delete.$more;
-        })
-        ->addColumn('category', function($query){
-            return $query->category->name;
-        })
-        ->addColumn('location', function($query){
-            return $query->location->name;
-        })
-        ->addColumn('status', function($query){
-            $html = '<select class="form-control approve" data-id="'.$query->id.'">
-                <option value="0">Pending</option>
-                <option value="1">Approve</option>
-            </select>';
+                return $edit.$delete.$more;
+            })
+            ->addColumn('category', function($query){
+                return $query->category->name;
+            })
+            ->addColumn('location', function($query){
+                return $query->location->name;
+            })
+            ->addColumn('status', function($query){
+                $html = '<select class="form-control approve" data-id="'.$query->id.'">
+                    <option value="0">Pending</option>
+                    <option value="1">Approve</option>
+                </select>';
 
-            return $html;
-        })
+                return $html;
+            })
 
-        ->addColumn('image', function($query){
-            return '<img width="60" src="'.asset($query->image).'" >';
-        })
-        ->addColumn('by', function($query){
-            return $query->user?->name;
-        })
-        ->rawColumns(['status', 'action', 'is_featured', 'is_verified', 'image'])
-        ->setRowId('id');
+            ->addColumn('image', function($query){
+                return '<img width="60" src="'.asset($query->image).'" >';
+            })
+            ->addColumn('by', function($query){
+                return $query->user?->name;
+            })
+            ->rawColumns(['status', 'action', 'is_featured', 'is_verified', 'image'])
+            ->setRowId('id');
     }
 
     /**
@@ -71,7 +72,7 @@ class PendingListingDataTable extends DataTable
      */
     public function query(Listing $model): QueryBuilder
     {
-        return $model->where('is_approved', 0)->newQuery();
+        return $model->where('is_approved', 0)->newQuery()->orderBy('created_at', 'desc');
     }
 
     /**
@@ -102,7 +103,7 @@ class PendingListingDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            Column::make('DT_RowIndex')->title('SN')->orderable(false)->searchable(false),
             Column::make('image'),
             Column::make('title'),
             Column::make('category')->title('Country'),
