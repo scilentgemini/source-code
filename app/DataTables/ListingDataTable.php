@@ -22,6 +22,7 @@ class ListingDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+            ->addIndexColumn()
             ->addColumn('action', function($query){
                 $edit = '<a href="'.route('admin.listing.edit', $query->id).'" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>';
                 $delete = '<a href="'.route('admin.listing.destroy', $query->id).'" class="delete-item btn btn-sm btn-danger ml-2"><i class="fas fa-trash"></i></a>';
@@ -82,7 +83,7 @@ class ListingDataTable extends DataTable
      */
     public function query(Listing $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()->orderBy('created_at', 'desc');
     }
 
     /**
@@ -113,7 +114,7 @@ class ListingDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            Column::make('DT_RowIndex')->title('SN')->orderable(false)->searchable(false),
             Column::make('image'),
             Column::make('title'),
             Column::make('category')->title('Country'),
