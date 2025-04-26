@@ -67,7 +67,7 @@
                         </div>
                         <div class="wsus__search_area">
                             <select class="select_2" name="location">
-                                <option value="">Location</option>
+                                <option value="">Companies</option>
                                 @foreach ($locations as $location)
                                     <option value="{{ $location->slug }}">{{ $location->name }}</option>
                                 @endforeach
