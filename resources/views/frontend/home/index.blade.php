@@ -149,20 +149,7 @@
                     <h3 style="margin-top: 0;">${featuredListing.title}</h3>
                     <p><strong>Salary:</strong> ${featuredListing.website || 'N/A'}</p>
                     <p><strong>Country:</strong> ${featuredListing.category?.name || 'N/A'}</p>
-                    <p><strong>Company:</strong> ${featuredListing.location?.name || 'N/A'}</p>
-                    <div style="margin-top: 10px;">
-                        <strong>Description:</strong>
-                        <div style="
-                            max-height: 200px;
-                            overflow-y: auto;
-                            margin-top: 5px;
-                            border: 1px solid #eee;
-                            padding: 10px;
-                            border-radius: 5px;
-                        ">
-                            ${featuredListing.description ?? 'No description available.'}
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         `;
