@@ -48,21 +48,24 @@ class ListingDataTable extends DataTable
                 return $query->location->name;
             })
             ->addColumn('status', function($query){
-                if($query->status === 1){
+                $status = filter_var($query->status, FILTER_VALIDATE_BOOLEAN);
+                if($status){
                     return "<span class='badge badge-primary'>Active</span>";
                 }else{
                     return "<span class='badge badge-danger'>Inactive</span>";
                 }
             })
             ->addColumn('is_featured', function($query){
-                if($query->is_featured === 1){
+                $featured = filter_var($query->is_featured, FILTER_VALIDATE_BOOLEAN);
+                if($featured){
                     return "<span class='badge badge-primary'>Yes</span>";
                 }else{
                     return "<span class='badge badge-danger'>No</span>";
                 }
             })
             ->addColumn('is_verified', function($query){
-                if($query->is_verified === 1){
+                $verified = filter_var($query->is_verified, FILTER_VALIDATE_BOOLEAN);
+                if($verified){
                     return "<span class='badge badge-primary'>Yes</span>";
                 }else{
                     return "<span class='badge badge-danger'>No</span>";
