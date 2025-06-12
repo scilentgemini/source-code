@@ -1878,7 +1878,7 @@
 
 	/* MENU START */
 	.main_menu {
-		height: 60px;
+		height: 80px;
 		border-bottom: 1px solid #2046DA;
 	}
 
@@ -1907,6 +1907,14 @@
 	.navbar-toggler:focus {
 		box-shadow: none;
 	}
+
+
+.navbar-brand img {
+  width: 60% !important;
+  height: auto;
+ }
+
+
 
 	.main_menu #navbarSupportedContent {
 		background: #fff;
@@ -2840,7 +2848,7 @@
 	/*404 page end*/
 
 	.main_menu .container {
-		padding-top: 5px;
+		/* padding-top: 5px; */
 		padding-bottom: 5px;
 	}
 
