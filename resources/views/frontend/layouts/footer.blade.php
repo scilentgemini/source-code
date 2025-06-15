@@ -13,7 +13,7 @@
                     <p>{!! $footerInfo?->short_description !!}</p>
                     <ul class="footer_icon">
                         @foreach ($socialLinks as $link)
-                        <li><a href="{{ $link->url }}"><i class="{{ $link->icon }}"></i></a></li>
+                            <li><a href="{{ $link->url }}"><i class="{{ $link->icon }}"></i></a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -25,7 +25,8 @@
                     <h3>Helpful Links</h3>
                     <ul class="footer_link">
                         @foreach (Menu::getByName('Footer Menu Two') as $footerMenuOne)
-                        <li><a href="{{ $footerMenuOne['link'] }}"><i class="far fa-chevron-double-right"></i> {{ $footerMenuOne['label'] }}</a></li>
+                            <li><a href="{{ $footerMenuOne['link'] }}"><i class="far fa-chevron-double-right"></i>
+                                    {{ $footerMenuOne['label'] }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -37,7 +38,8 @@
                     <h3>Information</h3>
                     <ul class="footer_link">
                         @foreach (Menu::getByName('Footer Menu Three') as $footerMenuOne)
-                        <li><a href="{{ $footerMenuOne['link'] }}"><i class="far fa-chevron-double-right"></i> {{ $footerMenuOne['label'] }}</a></li>
+                            <li><a href="{{ $footerMenuOne['link'] }}"><i class="far fa-chevron-double-right"></i>
+                                    {{ $footerMenuOne['label'] }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -48,13 +50,24 @@
                 <div class="footer_text footer_contact">
                     <h3>Information</h3>
                     <ul class="footer_link">
-                        <li>
-                            <p><i class="far fa-map-marker-alt"></i> {{ $footerInfo?->address }}</p>
+                        <li style="display: flex; align-items: center;">
+                            <i class="far fa-map-marker-alt" style="width: 20px; margin-right: 4px;"></i>
+                            <p style="margin: 0;">{{ $footerInfo?->address }}</p>
                         </li>
-                        <li><a href="mailto:{{ $footerInfo?->email }}"><i class="fal fa-envelope"></i> {{ $footerInfo?->email }}</a></li>
-                        <li><a href="callto:{{ $footerInfo?->phone }}"><i class="fal fa-phone-alt"></i> {{ $footerInfo?->phone }}</a></li>
-                        <li><a href="callto:+971558747819"><i class="fal fa-phone-alt"></i> +971 558 747 819</a></li>
+                        <li style="display: flex; align-items: center;">
+                            <i class="fal fa-envelope" style="width: 20px; margin-right: 4px;"></i>
+                            <a href="mailto:{{ $footerInfo?->email }}">{{ $footerInfo?->email }}</a>
+                        </li>
+                        <li style="display: flex; align-items: center;">
+                            <i class="fal fa-phone-alt" style="width: 20px; margin-right: 4px;"></i>
+                            <a href="callto:{{ $footerInfo?->phone }}">{{ $footerInfo?->phone }}</a>
+                        </li>
+                        <li style="display: flex; align-items: center;">
+                            <i class="fal fa-phone-alt" style="width: 20px; margin-right: 4px;"></i>
+                            <a href="callto:+971558747819">+971 558 747 819</a>
+                        </li>
                     </ul>
+
                 </div>
             </div>
         </div>
@@ -62,11 +75,13 @@
     <div class="footer_bottom">
         <div class="container">
             <div class="row">
-                <div class="col-xl-6 col-md-5">
+                <div class="col-xl-6 col-md-5 text-center text-md-start">
                     <p>{{ $footerInfo?->copyright }}</p>
                 </div>
-                <div class="col-xl-6 col-md-7 text-end">
-                    <p>Crafted with <i class="fas fa-heart" style="color: #8d029b;"></i> by <a href="https://mauveinetech.com" target="_blank" style="color: #2196F3;">Mauveine Tech</a></p>
+                <div class="col-xl-6 col-md-7 text-center text-md-end">
+                    <p>Crafted with <i class="fas fa-heart" style="color: #8d029b;"></i> by <a
+                            href="https://mauveinetech.com" target="_blank" style="color: #2196F3;">Mauveine Tech</a>
+                    </p>
                 </div>
             </div>
         </div>

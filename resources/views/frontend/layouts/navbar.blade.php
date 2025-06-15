@@ -53,6 +53,7 @@
         margin-left: 20px;
         display: flex;
         align-items: center;
+        background-color: none;
     }
 
     .wsus__topbar_right span:first-child {
